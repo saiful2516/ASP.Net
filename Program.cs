@@ -1,17 +1,16 @@
-namespace WinFormsApp1
+﻿internal class Program
 {
-    internal static class Program
+    private static void Main(string[] args)
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        static void Main()
-        {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
-        }
+        string messege = "Hello World";
+        Console.WriteLine(messege);
+        Console.WriteLine("Hello, World!");
+       
+
+        int number = 10;
+        int result = number + 20;
+        Console.WriteLine("Result :" + result);
+        Console.ReadLine();
+        Console.ReadKey();
     }
 }
