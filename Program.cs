@@ -2,24 +2,24 @@
 {
     private static void Main(string[] args)
     {
+        Console.Write("Enter English Score: ");
+        string englishScoreWithString = Console.ReadLine();
+        int englishScore = Convert.ToInt32(englishScoreWithString);
+        string result = String.Empty;
 
-        //user input
-        //Explicit Conversion
-        Console.WriteLine("Enter your first Number:");
-       
-        int firstNumber = Convert.ToInt32(Console.ReadLine());
-
-        Console.Write("Enter your Second Number:");
-        int secondNumber = Convert.ToInt32(Console.ReadLine());
-        //string messege = Console.ReadLine(); comment shor key: ctrl+k+c
-
-        int result = firstNumber + secondNumber;
-
-        Console.WriteLine("Output is:" +result);
-        char c = 'A';
-        int acii = c; // find the ascii value
-        Console.WriteLine(acii);
-
+        if(englishScore>100||englishScore<0)
+        {
+            result = "Score should be 0 to 100";
+        }
+        else if(englishScore >= 50)
+        {
+            result = "Congtratulations, You have passed"; 
+        }
+        else
+        {
+            result = "Sorry, You have failed";
+        }
+        Console.WriteLine(result);
         Console.ReadKey();
     }
 }
