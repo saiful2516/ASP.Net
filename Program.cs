@@ -1,25 +1,59 @@
-﻿internal class Program
+﻿using System.Diagnostics.CodeAnalysis;
+
+internal class Program
 {
     private static void Main(string[] args)
     {
-        Console.Write("Enter English Score: ");
-        string englishScoreWithString = Console.ReadLine();
-        int englishScore = Convert.ToInt32(englishScoreWithString);
-        string result = String.Empty;
+        int sum = 0;
+        for ( int i =0; i<=10; i++)
+        {
+            sum = sum + i;
+            if (i%2==0)
+            {
+                Console.WriteLine(i);
+            }
 
-        if(englishScore>100||englishScore<0)
-        {
-            result = "Score should be 0 to 100";
         }
-        else if(englishScore >= 50)
+        Console.WriteLine(sum);
+
+
+        //While loop: at least one time run then check the condition.
+        int j = 0;
+        while(true)
+         {
+            if(j>4)
+            {
+                break;
+            }
+            Console.WriteLine("Hello");
+            j++;
+
+         }
+        //while loop with continue statement
+        int k = 0;
+        
+        while (k < 20)
         {
-            result = "Congtratulations, You have passed"; 
+            k++;
+            if (k % 5 == 0)
+            {
+                continue;
+            }
+            Console.WriteLine(k);
         }
-        else
+        //do while loop
+        int n = 0;
+        do
         {
-            result = "Sorry, You have failed";
-        }
-        Console.WriteLine(result);
+            if (n % 2 == 0)
+            {
+                Console.WriteLine(n);
+            }
+            n++;
+
+        } while (n < 21);
+
         Console.ReadKey();
+        
     }
 }
