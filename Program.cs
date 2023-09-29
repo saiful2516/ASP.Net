@@ -1,59 +1,31 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-internal class Program
+﻿internal class Program
 {
     private static void Main(string[] args)
     {
-        int sum = 0;
-        for ( int i =0; i<=10; i++)
-        {
-            sum = sum + i;
-            if (i%2==0)
-            {
-                Console.WriteLine(i);
-            }
+        int a = 15;
+        long l = 500;
+        a = Convert.ToInt32(l);
+        bool b = true;
+        a = Convert.ToInt32(b);
+        char c = 'f';
+        a = c;
+        Console.WriteLine(b);
 
-        }
-        Console.WriteLine(sum);
+        int result =  Add(50, 90);
+        Console.WriteLine(result);
+       
 
 
-        //While loop: at least one time run then check the condition.
-        int j = 0;
-        while(true)
-         {
-            if(j>4)
-            {
-                break;
-            }
-            Console.WriteLine("Hello");
-            j++;
-
-         }
-        //while loop with continue statement
-        int k = 0;
-        
-        while (k < 20)
-        {
-            k++;
-            if (k % 5 == 0)
-            {
-                continue;
-            }
-            Console.WriteLine(k);
-        }
-        //do while loop
-        int n = 0;
-        do
-        {
-            if (n % 2 == 0)
-            {
-                Console.WriteLine(n);
-            }
-            n++;
-
-        } while (n < 21);
 
         Console.ReadKey();
-        
     }
+
+    //Method name start with verb and pascal case
+    //method name change best way is using refactor/name, fist right clich on calling method Add
+    static int Add(int firstNumber, int secondNumber)
+    {
+        int sum = firstNumber + secondNumber;
+        return sum;
+    }
+
 }
