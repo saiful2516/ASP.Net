@@ -2,30 +2,30 @@
 {
     private static void Main(string[] args)
     {
-        int a = 15;
-        long l = 500;
-        a = Convert.ToInt32(l);
-        bool b = true;
-        a = Convert.ToInt32(b);
-        char c = 'f';
-        a = c;
-        Console.WriteLine(b);
+        int[] numbers = new int[5];
+       // numbers[0] = 10;
+        //numbers[1] = 20;
+       // numbers[2] = 30;
+       // numbers[3] = 40;
 
-        int result =  Add(50, 90);
-        Console.WriteLine(result);
-       
+        for(int i = 0; i < numbers.Count(); i++)
+        {
+            numbers[i] = Convert.ToInt32(Console.ReadLine());
+        }
+        int sum = numbers.Sum();
+        Console.WriteLine(sum);
 
+        for(int i = 0; i<numbers.Count(); i++)
+        {
+            Console.WriteLine("Output" +numbers[i]);
+            // numbers[i] = Convert.ToInt32(Console.ReadLine());
+        }
 
+        foreach(var data in numbers)
+        {
+            Console.WriteLine(data);
+        }
 
         Console.ReadKey();
     }
-
-    //Method name start with verb and pascal case
-    //method name change best way is using refactor/name, fist right clich on calling method Add
-    static int Add(int firstNumber, int secondNumber)
-    {
-        int sum = firstNumber + secondNumber;
-        return sum;
-    }
-
 }
