@@ -1,30 +1,62 @@
-﻿internal class Program
+﻿using System.Collections;
+
+internal class Program
 {
+    
+
     private static void Main(string[] args)
     {
-        int[] numbers = new int[5];
-       // numbers[0] = 10;
-        //numbers[1] = 20;
-       // numbers[2] = 30;
-       // numbers[3] = 40;
+        //Array list type and size dynamic
+        ArrayList array = new ArrayList();
+        array.Add("Saiful Islam");
+        array.Add("Age" + 30);
+        array.Add("phone"+ 01714456);
+        array.Add(3.012);
+        array.Add(200);
+        //array.Remove(3.012);
+        //array.Reverse();
 
-        for(int i = 0; i < numbers.Count(); i++)
+        foreach (var value in array)
         {
-            numbers[i] = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(value);
         }
-        int sum = numbers.Sum();
-        Console.WriteLine(sum);
+        array.RemoveAt(4); // remove by index number
 
-        for(int i = 0; i<numbers.Count(); i++)
+       // array.RemoveRange(20, 25); // remove by range
+
+        foreach(var value in array)
         {
-            Console.WriteLine("Output" +numbers[i]);
-            // numbers[i] = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(value);
         }
 
-        foreach(var data in numbers)
+
+        //List : Type fixed but size dynamic
+
+        List<string> names = new List<string>();
+        names.Add("student");
+        names.Add("Employee");
+        names.Add("Business");
+        names.Add("Politician");
+
+        foreach( var value in names)
         {
-            Console.WriteLine(data);
+            Console.WriteLine(value);
         }
+        names.Remove("Politician");
+        foreach (var value in names)
+        {  
+            if (value  == "Politician")
+            {
+                Console.WriteLine("Data found");
+            }
+            else
+            {
+                Console.WriteLine("Data not Found");
+            }
+            Console.WriteLine(value);
+        }
+
+        
 
         Console.ReadKey();
     }
