@@ -1,62 +1,63 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
+namespace StackExample;
+using System;
+using System.Collections;
 
 internal class Program
 {
-    
-
     private static void Main(string[] args)
-    {
-        //Array list type and size dynamic
-        ArrayList array = new ArrayList();
-        array.Add("Saiful Islam");
-        array.Add("Age" + 30);
-        array.Add("phone"+ 01714456);
-        array.Add(3.012);
-        array.Add(200);
-        //array.Remove(3.012);
-        //array.Reverse();
-
-        foreach (var value in array)
-        {
-            Console.WriteLine(value);
-        }
-        array.RemoveAt(4); // remove by index number
-
-       // array.RemoveRange(20, 25); // remove by range
-
-        foreach(var value in array)
-        {
-            Console.WriteLine(value);
-        }
-
-
-        //List : Type fixed but size dynamic
-
-        List<string> names = new List<string>();
-        names.Add("student");
-        names.Add("Employee");
-        names.Add("Business");
-        names.Add("Politician");
-
-        foreach( var value in names)
-        {
-            Console.WriteLine(value);
-        }
-        names.Remove("Politician");
-        foreach (var value in names)
-        {  
-            if (value  == "Politician")
-            {
-                Console.WriteLine("Data found");
-            }
-            else
-            {
-                Console.WriteLine("Data not Found");
-            }
-            Console.WriteLine(value);
-        }
-
+    {   
         
+        //Stack Last in first out. Lifo. variable type fixed and not fixed both operation possible 
+        Stack aStack = new Stack();
+        aStack.Push(121);
+        aStack.Push("Hello");
+        aStack.Push(125.4);
+        foreach(var value in aStack)
+        {
+            Console.WriteLine(value);
+        }
+        aStack.Pop();
+        foreach (var value in aStack)
+        {
+            Console.WriteLine(value);
+        }
+
+        Stack<int> numbers = new Stack<int>();
+        numbers.Push(1);
+        numbers.Push(2);
+        numbers.Push(3);
+        numbers.Push(4);
+
+        foreach (var item in numbers)
+        {
+            Console.WriteLine(item + ",");
+
+        }
+
+        numbers.Pop();
+        foreach (var item in numbers)
+        {
+            Console.WriteLine(item + ",");
+
+        }
+
+        Console.WriteLine("Queue First come fist out ");
+        Queue<int> anQueue = new Queue<int>();
+        anQueue.Enqueue(10);
+        anQueue.Enqueue(20);
+        anQueue.Enqueue(30);
+        anQueue.Enqueue(65);
+        foreach (var data in anQueue)
+        {
+            Console.WriteLine(data);
+        }
+
+        anQueue.Dequeue();
+        foreach (var data in anQueue) 
+        {
+            Console.WriteLine(data);
+        }
 
         Console.ReadKey();
     }
