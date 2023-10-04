@@ -1,64 +1,54 @@
-﻿using System.Collections.Generic;
-namespace StackExample;
-using System;
+﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
+
 
 internal class Program
 {
     private static void Main(string[] args)
-    {   
-        
-        //Stack Last in first out. Lifo. variable type fixed and not fixed both operation possible 
-        Stack aStack = new Stack();
-        aStack.Push(121);
-        aStack.Push("Hello");
-        aStack.Push(125.4);
-        foreach(var value in aStack)
+    {   //Dictionary type fixed
+        Dictionary<int, string> aDictionary = new Dictionary<int, string>();
+        aDictionary.Add(1, "phoenix");
+        aDictionary.Add(2, "Honda");
+        aDictionary.Add(3, "Hero");
+        string outPut;
+        if(aDictionary.TryGetValue(5, out outPut))  // Bolean type output
         {
-            Console.WriteLine(value);
+            Console.WriteLine("find data:" + outPut);
         }
-        aStack.Pop();
-        foreach (var value in aStack)
+        else
         {
-            Console.WriteLine(value);
+            Console.WriteLine("Not found");
         }
-
-        Stack<int> numbers = new Stack<int>();
-        numbers.Push(1);
-        numbers.Push(2);
-        numbers.Push(3);
-        numbers.Push(4);
-
-        foreach (var item in numbers)
+        foreach(var data in aDictionary)
         {
-            Console.WriteLine(item + ",");
-
+            Console.WriteLine("Id:" + data.Key +" value:" +data.Value);
         }
-
-        numbers.Pop();
-        foreach (var item in numbers)
-        {
-            Console.WriteLine(item + ",");
-
-        }
-
-        Console.WriteLine("Queue First come fist out ");
-        Queue<int> anQueue = new Queue<int>();
-        anQueue.Enqueue(10);
-        anQueue.Enqueue(20);
-        anQueue.Enqueue(30);
-        anQueue.Enqueue(65);
-        foreach (var data in anQueue)
+        //Hashtable dynamic type
+        Hashtable aHashtable = new Hashtable();
+        aHashtable.Add(1, "FSV");
+        aHashtable.Add(2, "Two");
+        aHashtable.Add(3, 4);
+        aHashtable.Add(4, 35.5);
+        aHashtable.Add(5, 30.5);
+        aHashtable.Add(6, 10);
+        aHashtable["1"] = "Fisrt entry";
+        foreach(var data in aHashtable.Values)
         {
             Console.WriteLine(data);
         }
-
-        anQueue.Dequeue();
-        foreach (var data in anQueue) 
+        foreach (var data in aHashtable.Keys)
         {
             Console.WriteLine(data);
         }
-
+        if (aHashtable.Contains("1"))
+        {
+            Console.WriteLine("Data found");
+        }
         Console.ReadKey();
+        
+       
     }
 }
