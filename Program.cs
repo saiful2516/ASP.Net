@@ -1,37 +1,60 @@
-﻿
-using System;
-using System.Reflection;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
-
-
-
-internal class Program
+﻿internal class Program
 {
     private static void Main(string[] args)
     {
-       var aPerson = Tuple.Create(1, "Dept:Computer Sciences", "Type: Employee");
-        Console.WriteLine(aPerson.Item1);
-        Console.WriteLine(aPerson.Item2);
-        Console.WriteLine(aPerson.Item3);
+        try// actual code which may be with error or without error.
+        {
+            Console.Write("Enter a number: ");
+            var number = int.Parse(Console.ReadLine());
+            Console.WriteLine($"Squre of {number} is {number*number}");
+        }
+        catch // Provide a messege if any error occured
+        {
+            Console.WriteLine("Error Occured.");
+        }
+        finally // final direction for the user about the next step.
+        {
+            Console.WriteLine("Retry with different number.");
+        }
+        try
+        {
+            Console.Write("Enter a number: ");
+            var number = int.Parse(Console.ReadLine());
+            Console.WriteLine($"Squre of {number} is {number * number}");
+        }
+        catch(Exception ex)
+        {
+            Console.Write("Error Info:" + ex.Message);
+        }
+        finally
+        {
+            Console.WriteLine("Re-try with a different number.");
+        }
+        try
+        {
+            int num = int.Parse(Console.ReadLine());
 
-        var numbers = Tuple.Create(1, 2, Tuple.Create(3, 4, 5, 6, 7, 8), 9, 10, 11, 12, 13);
-        Console.WriteLine(numbers.Item1); // returns 1
-        Console.WriteLine(numbers.Item2); // returns 2
-        Console.WriteLine(numbers.Item3); // returns (3, 4, 5, 6, 7,  8)
-        Console.WriteLine(numbers.Item3.Item1); // returns 3
-        Console.WriteLine(numbers.Item4); // returns 9
-        Console.WriteLine(numbers.Rest.Item1); //returns 13
+            int result = 100 / num;
 
-        var person = Tuple.Create(1, "Steve", "Jobs");
-        DisplayTuple(person);
+            Console.WriteLine("100 / {0} = {1}", num, result);
+        }
+        catch (DivideByZeroException ex)
+        {
+            Console.Write("Cannot divide by zero. Please try again.");
+        }
+        catch (InvalidOperationException ex)
+        {
+            Console.Write("Invalid operation. Please try again.");
+        }
+        catch (FormatException ex)
+        {
+            Console.Write("Not a valid format. Please try again.");
+        }
+        catch (Exception ex)
+        {
+            Console.Write("Error occurred! Please try again.");
+        }
         Console.ReadKey();
     }
-    static void DisplayTuple(Tuple<int,string,string> person)
-    {
-        Console.WriteLine($"Id = {person.Item1}");
-        Console.WriteLine($"First Name = {person.Item2}");
-        Console.WriteLine($"Last Name = {person.Item3}");
-    }
+    
 }
