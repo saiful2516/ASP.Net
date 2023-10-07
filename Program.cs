@@ -1,60 +1,56 @@
-﻿internal class Program
+﻿using System.Text;
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+
+internal class Program
 {
+
+
+
+    static readonly string textFile = @"F:/HIS/Programming/C#/File.text";
+
     private static void Main(string[] args)
     {
-        try// actual code which may be with error or without error.
-        {
-            Console.Write("Enter a number: ");
-            var number = int.Parse(Console.ReadLine());
-            Console.WriteLine($"Squre of {number} is {number*number}");
-        }
-        catch // Provide a messege if any error occured
-        {
-            Console.WriteLine("Error Occured.");
-        }
-        finally // final direction for the user about the next step.
-        {
-            Console.WriteLine("Retry with different number.");
-        }
-        try
-        {
-            Console.Write("Enter a number: ");
-            var number = int.Parse(Console.ReadLine());
-            Console.WriteLine($"Squre of {number} is {number * number}");
-        }
-        catch(Exception ex)
-        {
-            Console.Write("Error Info:" + ex.Message);
-        }
-        finally
-        {
-            Console.WriteLine("Re-try with a different number.");
-        }
-        try
-        {
-            int num = int.Parse(Console.ReadLine());
+        string path = @"F:/HIS/Programming/C#/File.text";
 
-            int result = 100 / num;
+        // Delete the file if it exists.  
+        if (File.Exists(path))
+        {
+            File.Delete(path);
+        }
 
-            Console.WriteLine("100 / {0} = {1}", num, result);
-        }
-        catch (DivideByZeroException ex)
+        //Create the file.  
+        using (FileStream fs = File.Create(path))
         {
-            Console.Write("Cannot divide by zero. Please try again.");
+            AddText(fs, "This is some text");
+            AddText(fs, "This is some more text,");
+            AddText(fs, "\r\nand this is on a new line");
+            AddText(fs, "\r\n\r\nThe following is a subset of characters:\r\n");
+
+            for (int i = 1; i < 150; i++)
+            {
+                AddText(fs, Convert.ToChar(i).ToString());
+
+            }
         }
-        catch (InvalidOperationException ex)
+
+        //Open the stream and read it back.  
+        using (FileStream fs = File.OpenRead(path))
         {
-            Console.Write("Invalid operation. Please try again.");
-        }
-        catch (FormatException ex)
-        {
-            Console.Write("Not a valid format. Please try again.");
-        }
-        catch (Exception ex)
-        {
-            Console.Write("Error occurred! Please try again.");
+            byte[] b = new byte[1024];
+            UTF8Encoding temp = new UTF8Encoding(true);
+            while (fs.Read(b, 0, b.Length) > 0)
+            {
+                Console.WriteLine(temp.GetString(b));
+            }
         }
         Console.ReadKey();
     }
-    
+    private static void AddText(FileStream fs, string value)
+    {
+        byte[] info = new UTF8Encoding(true).GetBytes(value);
+        fs.Write(info, 0, info.Length);
+    }
 }
